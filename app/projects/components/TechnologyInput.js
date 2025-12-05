@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-export default function TechnologyInput({ technologies, setTechnologies, onChange }) {
-  const [input, setInput] = useState("");
+const TechnologyInput = ({ value = [], onChange }) => {
+  const [technologies, setTechnologies] = useState(value);
+  const [input, setInput] = useState('');
 
   const addTech = (tech) => {
     if (!tech) return;
@@ -10,7 +11,7 @@ export default function TechnologyInput({ technologies, setTechnologies, onChang
       setTechnologies(updated);
       if (onChange) onChange(updated);
     }
-    setInput("");
+    setInput('');
   };
 
   const removeTech = (tech) => {
@@ -20,11 +21,13 @@ export default function TechnologyInput({ technologies, setTechnologies, onChang
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       addTech(input.trim());
     }
   };
+
+  const predefined = ['JavaScript', 'React', 'Next.js'];
 
   return (
     <div>
@@ -37,25 +40,27 @@ export default function TechnologyInput({ technologies, setTechnologies, onChang
       <button type="button" onClick={() => addTech(input.trim())}>
         Add
       </button>
-
       <div>
-        {["JavaScript", "React", "Next.js"].map((tech) => (
+        {predefined.map((tech) => (
           <button
             key={tech}
             type="button"
-            onClick={() => addTech(tech)}
             disabled={technologies.includes(tech)}
+            onClick={() => addTech(tech)}
           >
             {tech}
           </button>
         ))}
       </div>
-
       <div>
         {technologies.map((tech) => (
           <span key={tech}>
-            {tech}{" "}
-            <button aria-label="Remove" onClick={() => removeTech(tech)}>
+            {tech}
+            <button
+              type="button"
+              aria-label="Remove"
+              onClick={() => removeTech(tech)}
+            >
               x
             </button>
           </span>
@@ -63,4 +68,6 @@ export default function TechnologyInput({ technologies, setTechnologies, onChang
       </div>
     </div>
   );
-}
+};
+
+export default TechnologyInput;

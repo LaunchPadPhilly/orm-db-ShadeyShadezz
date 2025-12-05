@@ -1,4 +1,14 @@
 import Image from "next/image";
+// projects.js (or api route)
+import { prisma } from '@/db';
+
+export async function getAllProjects() {
+  return await prisma.project.findMany({
+    include: {
+      technologies: true, // include related technologies
+    },
+  });
+}
 
 export default function HomePage() {
   return (
