@@ -1,11 +1,9 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white text-center p-8 mt-auto">
-      <div className="max-w-6xl mx-auto">
-        <p className="text-gray-400">
-          © 2025 Your Name. Built with Next.js and Tailwind CSS
-        </p>
+    <footer className="bg-white border-t py-6 mt-10">
+      <div className="max-w-5xl mx-auto text-center text-gray-600">
+        © 2025 William Andrews — All Rights Reserved
       </div>
     </footer>
-  )
+  );
 }

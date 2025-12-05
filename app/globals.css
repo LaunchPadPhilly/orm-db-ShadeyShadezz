@@ -25,3 +25,8 @@ body {
     text-wrap: balance;
   }
 }
+/* Ensure light background everywhere */
+body {
+  @apply bg-gray-50 text-gray-900;
+}
+
