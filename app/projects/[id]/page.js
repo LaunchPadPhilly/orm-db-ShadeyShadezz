@@ -1,4 +1,6 @@
 import Image from "next/image";
+import ProjectForm from "../projects/components/ProjectForm";
+import TechnologyInput from "../components/TechnologyInput";
 
 export default function ProjectsPage() {
   const projects = [
